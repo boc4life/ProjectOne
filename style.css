@@ -45,6 +45,21 @@
     margin: auto;
 }
 
+.restaurantName {
+    margin: auto;
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
 .carousel-control-next {
     color: grey;
+}
+
+.icon {
+    background-color: black;
 }
