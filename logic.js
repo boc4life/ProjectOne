@@ -1,3 +1,8 @@
+var city = "Philadelphia"
+var cityBlurb = "Founded in 1682, Philadelphia is one of the most historic cities in the United States. Visitors can immerse themselves in American history, while exploring a city full of culture and cheesesteaks."
+
+$("#cityName").text(city);
+$("#cityBlurb").text(cityBlurb);
 
 $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyAOqSGsfemsuvxQw6-fkfPm6M-OpPYOCco&libraries=places&callback=loadCarousel");
 
@@ -5,25 +10,6 @@ var service;
 var activeSet = false;
 
 var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
-
-// function MapApiLoaded () {
-//     var request = {
-//         query: "Pat's Philadelphia",
-//         fields: ["photos", "formatted_address", "name", "rating", "place_id"]
-//     };
-
-//     service = new google.maps.places.PlacesService(map);
-//     service.findPlaceFromQuery(request, callback);
-// }
-
-// function callback(results, status) {
-//     if (status == google.maps.places.PlacesServiceStatus.OK) {
-//         console.log(results[0]);
-//         console.log(results[0].photos[0].getUrl({"maxWidth": 350, "maxHeight": 350}));
-//         $("#photo1"[i]).attr("src", results[0].photos[0].getUrl({"maxWidth": 350, "maxHeight": 350}));
-//         $("#name"[i]).html(results[0].name)
-//     }
-// }
 
 function loadCarousel() {
     console.log("hello")
