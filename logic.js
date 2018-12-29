@@ -4,7 +4,7 @@ var cityBlurb = "Founded in 1682, Philadelphia is one of the most historic citie
 $("#cityName").text(city);
 $("#cityBlurb").text(cityBlurb);
 
-$.getScript("http://maps.google.com/maps/api/js?key=AIzaSyAOqSGsfemsuvxQw6-fkfPm6M-OpPYOCco&libraries=places&callback=loadCarousel");
+$.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
 
 var service;
 var activeSet = false;
@@ -31,7 +31,7 @@ function callback(results, status) {
                 newDiv.addClass("active");
                 activeSet = true;
             }
-        var image = $("<img class=\"d-block mx-auto w-100\">");
+        var image = $("<img class=\"restaurantImage d-block mx-auto w-100\">");
         var name = $("<p>");
         image.attr("src", results.photos[0].getUrl({"madWidth": 350, "maxHeight": 350}));
         name.append(results.name);
