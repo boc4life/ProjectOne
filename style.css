@@ -63,6 +63,10 @@
     width: 350px;
 }
 
+#restaurantSearch {
+    text-align: left;
+}
+
 .carousel-control-next {
     color: grey;
 }
@@ -91,4 +95,6 @@
 
 .weatherImage {
     margin:auto;
+    height:100%;
+    width:100%;
 }

@@ -45,6 +45,6 @@ function callback(results, status) {
         name.append(results.name);
         newDiv.append(image).append(name);
         console.log(newDiv);
-        $("#carouselExampleIndicators").prepend(newDiv);
+        $("#carouselExampleIndicators").append(newDiv);
     }
 }
