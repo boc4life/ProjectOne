@@ -29,6 +29,7 @@
 
 #sidebar {
     height: 400px;
+    text-align:center;
 }
 
 #restaurants {
@@ -77,4 +78,17 @@
     font-family: 'Libre Baskerville', serif;
     font-size: 1em;
     font-weight: bold;
+}
+
+#weatherBox {
+    margin-top: 5px;
+    background-color:yellow;
+}
+
+#weatherData {
+    text-align:left;
+}
+
+.weatherImage {
+    margin:auto;
 }

@@ -106,12 +106,27 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="container-fluid border border-dark" id="sidebar"></div>
+                <div class="container-fluid border border-dark" id="sidebar">
+                    <div class="container-fluid border border-dark" id="weatherBox">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <u><strong>Current weather</strong></u> <br>
+                                <div id="weatherData">
+                                    <u>Temperature:</u>&nbsp;<span id="temperature"></span>&deg;<br>
+                                    <span id="clouds"></span>% cloudy <br>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="weatherImageBox"></div>
+                            </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <script type="text/javascript" src="logic.js"></script>
-        <script type="text/javascript" src="searchlogic.js"></script>
+
+        <script type="text/javascript" src="assets/javascript/logic.js"></script>
+        <script type="text/javascript" src="assets/javascript/searchlogic.js"></script>
+        <script type="text/javascript" src="assets/javascript/weatherscript.js"></script>
         <div id="map"></div>
 
     </body>
