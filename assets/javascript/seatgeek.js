@@ -10,13 +10,14 @@ $.ajax({
     for (var i = 0; i < 5; i++) {
         var newRow = $("<tr>");
         var newEvent = $("<td>");
-        var newButtonDiv = $("<td>");
-        var newButton = $("<button>");
-        newButtonDiv.addClass("ml-auto")
+        var newLinkDiv = $("<td>");
+        var newLink = $("<a>");
+        newLink.addClass("ml-auto")
         newEvent.append(sgResponse.events[i].short_title);
-        newButton.text("Tickets");
-        newButtonDiv.append(newButton);
-        newRow.append(newEvent).append(newButtonDiv);
+        newLink.text("Tickets");
+        newLink.attr("href", sgResponse.events[i].url);
+        newLinkDiv.append(newLink);
+        newRow.append(newEvent).append(newLinkDiv);
         $("#seatGeekTable").append(newRow);
     }
 })
