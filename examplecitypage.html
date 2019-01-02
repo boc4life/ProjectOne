@@ -38,26 +38,34 @@
                                 </li>
                                 </ul>
                                 <ul class="navbar-nav d-inline my-2 my-lg-0">
-                                    <li class="nav-item dropdown d-inline mynav" id="signin">
+                                    <li class="nav-item dropdown d-inline mynav signIn">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Register
                                         </a>
-                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
-                                            <input>Email</input>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <input id="registerEmail">Email</input>
                                             <br>
-                                            <input>Password</input>
+                                            <input id="registerPassword">Password</input>
+                                            <br>
+                                            <input id="registerUsername">Username</input>
+                                            <br><button class="btn btn-dark" id="registerBtn">Submit</button>
                                         </div>
                                     </li>
-                                    <li class="nav-item dropdown d-inline mynav" id="signin">
+                                    <li class="nav-item dropdown d-inline mynav signIn">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Sign In
                                         </a>
-                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
-                                            <input>Email</input>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <input id="signInEmail">Email</input>
                                             <br>
-                                            <input>Password</input>
+                                            <input id="signInPassword">Password</input>
+                                            <br>
+                                            <br><button class="btn btn-dark" id="signInBtn">Submit</button>
                                         </div>
                                     </li>
+                                </ul>
+                                <ul class="navbar-nav">
+                                <a class="nav-link d-none" id="profileLink" href="profile.html"></a>
                                 </ul>
                             </div>
                         </nav>

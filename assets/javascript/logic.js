@@ -27,13 +27,81 @@ var activeSet;
 var lat;
 var lng;
 var latlng;
+var user = false;
+var uid;
+var userDisplay;
+
+var user = firebase.auth().currentUser;
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+      console.log(user)
+      $(".signIn").addClass("d-none");
+      $(".signIn").removeClass("d-inline");
+      $("#profileLink").text(user.displayName);
+      $("#profileLink").removeClass("d-none");
+      uid = user.uid;
+  }
+})
+
 
 $(document).ready(function() {
 
 renderCity();
 $(".navbarCity").on("click", navbarClick);
 $(document).on("click", ".yesBtn", addRestaurant);
+$("#signInBtn").on("click", signIn);
+$("#registerBtn").on("click", register);
 })
+
+function register() {
+    var email = $("#registerEmail").val().trim();
+    var password = $("#registerPassword").val().trim();
+    var username = $("#registerUsername").val().trim();
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == "auth/email-already-in-use") {
+          alert("Email already in use");
+        }
+        if (errorCode == "auth/invalid-email") {
+          alert("This does not appear to be a valid email address");
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+      }).then(function () {
+        user = firebase.auth().currentUser;
+        uid = user.uid;
+        user.updateProfile({
+            displayName: username
+        });
+        userDisplay = username;
+        return userDisplay
+      })
+}
+
+function signIn() {
+    email = $("#signInEmail").val().trim();
+    password = $("#signInPassword").val().trim();
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode == "auth/invalid-email") {
+        alert("Invalid Email");
+      }
+      if (errorCode == "auth/user-not-found") {
+        alert("Username Not Found");
+      }
+      if (errorCode == "auth/wrong-password") {
+        alert("Incorrect Password");
+      } else {
+        alert(errorMessage);
+      }
+    }).then(function () {
+      user = firebase.auth().currentUser;
+      uid = user.uid;
+    })
+  }
 
 function loadCarousel() {
     console.log(restaurantIDs);
