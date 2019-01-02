@@ -1,0 +1,123 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bimg {
+    background: url("../images/Philly.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    z-index: 0;
+}
+
+h1 {
+    margin-top: 200px;
+    text-align: center;
+}
+
+#dropdownlower {
+    position: absolute;
+    left: 530px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.dropdownbar {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.navbar {
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.align-right{
+    position: absolute;
+    left: 650px;
+}
+
+.btn {
+    position: relative;
+    left: 430px;
+    top: 300px;
+    background-color: rgb(252, 241, 241);
+    color: black;
+    width: 200px;
+    text-align: center;
+}
+
+#dropdownbar {
+    text-align: center;
+}
+
+.dropdown-item {
+    text-align: center;
+}
+
+.mynav {
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: rgba(0,0,0,.5);
+}
+#mainNav{
+    margin-bottom: 1rem;
+}
+.nav-link {
+    display: inline;
+}
+#cityName {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 4em;
+}
+#cityBlurb {
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
+    font-weight: 200;
+    font-style: italic;
+}
+#sidebar {
+    height: 400px;
+}
+#restaurants {
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+#restaurantHead {
+    margin: auto;
+}
+.carousel-control-next {
+    color: grey;
+}
+
+.footer {
+    position: absolute;
+    margin-left: 200px;
+    bottom: 0;
+    width: 71%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+.dropdown-menu {
+    width: 200px;
+}
+
+.input {
+    margin: 5px; 
+}

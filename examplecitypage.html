@@ -1,0 +1,142 @@
+<!doctype HTML>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container" id="mainNav">
+            <div class="main">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="#">InfoCities</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Cities
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                </ul>
+                                <ul class="navbar-nav d-inline my-2 my-lg-0">
+                                    <li class="nav-item dropdown d-inline mynav" id="signin">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Register
+                                        </a>
+                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
+                                            <input>Email</input>
+                                            <br>
+                                            <input>Password</input>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown d-inline mynav" id="signin">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Sign In
+                                        </a>
+                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
+                                            <input>Email</input>
+                                            <br>
+                                            <input>Password</input>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <span id="cityName"></span>
+            <br>
+            <br>
+                <div class="container-fluid mx-auto w-75" id="cityOpen">
+                    <span id="cityBlurb"></span>
+                </div>
+            <br>
+            <br>
+                <div class="container-fluid mx-auto w-75" id="restaurants">
+                    <p id="restaurantHead">Restaurants You'll Love</p>
+            <br>
+                    <div id="carouselExampleIndicators" class="carousel slide w-50 mx-auto" data-ride="carousel">
+                    </div>
+                </div>
+            <br>
+            <br>
+                <div id="restaurantAdd">
+                    <div class="input-group">
+                        <input type="text" class="input-group-text w-25" id="restaurantSearch"></input>
+                        <div class="input-group-append">
+                            <button class="input-group-append" id="restaurantSearchBtn">Search</button>
+                        </div>
+                    </div>
+                    <p id="addRestText" class="mr-auto">Have a restaurant you'd like to add to our list? Search for it here!</p>
+            <br>
+                    <div class="container" id="searchResultsContainer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="container-fluid border border-dark" id="sidebar">
+                    <div class="container-fluid border border-dark" id="weatherBox">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <u><strong>Current weather</strong></u> <br>
+                                <div id="weatherData">
+                                    <u>Temperature:</u>&nbsp;<span id="temperature"></span>&deg;<br>
+                                    <span id="clouds"></span>% cloudy <br>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div id="weatherImageBox"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="seatGeekBox">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <u><strong>Upcoming Local Concerts</strong></u>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table" id="seatGeekTable">
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="assets/javascript/logic.js"></script>
+        <script type="text/javascript" src="assets/javascript/searchlogic.js"></script>
+        <script type="text/javascript" src="assets/javascript/weatherscript.js"></script>
+        <script type="text/javascript" src="assets/javascript/seatgeek.js"></script>
+        <div id="map"></div>
+
+    </body>
+</html>

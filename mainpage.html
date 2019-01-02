@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+        <head>
+  
+<meta charset="UTF-8">
+    <title>Project 1</title>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        
+</head>
+
+<body>
+  
+<div class="bimg" id="bimg">
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">InfoCities</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>  
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Cities
+                            </a>
+                            <div class="dropdown-menu dropdownbar" id="dropdownbar" aria-labelledby="navbarDropdown">
+                                    </div>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                </ul>
+                                <ul class="navbar-nav d-inline my-2 my-lg-0">
+                                    <li class="nav-item dropdown d-inline mynav" id="register">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Register
+                                        </a>
+                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
+                                            <input class="input">Email</input>
+                                            <br>
+                                            <input class="input">Password</input>
+                                            <br>
+                                            <button class="input" id="Sign-In">Register</button>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown d-inline mynav" id="signin">
+                                        <a class="nav-link dropdown-toggle signin" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Sign In
+                                        </a>
+                                        <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
+                                            <input class="input" id="email">Email</input>
+                                            <br>
+                                            <input class="input" id="password">Password</input>
+                                            <br>
+                                            <button class="input" id="Sign-In">Sign In</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Select a city...
+                                </button>
+                                <div class="dropdown-menu dropdownbar" aria-labelledby="dropdownMenuButton" id="dropdownbar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">
+            InfoCities ©(2018) 
+        </span>
+    </div>
+</footer>
+
+
+<script src="assets/javascript/main.js"></script>
+
+</body>
+</html>

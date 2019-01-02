@@ -1,0 +1,105 @@
+.mynav {
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: rgba(0,0,0,.5);
+}
+
+#mainNav{
+    margin-bottom: 1rem;
+}
+
+.nav-link {
+    display: inline;
+}
+
+#cityName {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 4em;
+}
+
+#cityBlurb {
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
+    font-weight: 200;
+    font-style: italic;
+}
+
+#sidebar {
+    text-align:center;
+    padding-bottom: 100px;
+}
+
+#restaurants {
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    height: 425px;
+}
+
+#restaurantHead {
+    margin: auto;
+}
+
+.restaurantName {
+    margin: auto;
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.restaurantImage {
+    height: 350px;
+    width: 350px;
+}
+
+#restaurantSearch {
+    text-align: left;
+}
+
+.carousel-control-next {
+    color: grey;
+}
+
+.icon {
+    background-color: black;
+}
+
+#addRestText {
+    font-family: 'Cinzel', serif;
+    font-family: 'Source Serif Pro', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#weatherBox {
+    margin-top: 5px;
+    background-color:yellow;
+}
+
+#weatherData {
+    text-align:left;
+}
+
+.weatherImage {
+    margin:auto;
+    height:100%;
+    width:100%;
+}
+
+#seatGeekBox {
+    background-color: #4dff4d;
+    margin-top: 5px;
+}
