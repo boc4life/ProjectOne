@@ -43,7 +43,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 })
 
-
 $(document).ready(function() {
 
 renderCity();
