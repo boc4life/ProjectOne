@@ -114,7 +114,7 @@ function renderCity() {
         var service;
         activeSet = false;
 
-        $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
+        $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
 
     // var service;
     // var activeSet = false;
