@@ -32,19 +32,8 @@ $(document).ready(function() {
 
 renderCity();
 $(".navbarCity").on("click", navbarClick);
+$(document).on("click", ".yesBtn", addRestaurant);
 })
-// var city = "Philadelphia"
-// var cityBlurb = "Founded in 1682, Philadelphia is one of the most historic cities in the United States. Visitors can immerse themselves in American history, while exploring a city full of culture and cheesesteaks."
-
-// $("#cityName").text(city);
-// $("#cityBlurb").text(cityBlurb);
-
-// $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
-
-// var service;
-// var activeSet = false;
-
-// var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
 
 function loadCarousel() {
     console.log(restaurantIDs);
@@ -116,25 +105,4 @@ function renderCity() {
 
         $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
 
-    // var service;
-    // var activeSet = false;
-
     }
-    // var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
-
-
-// function snapshotToArray(restaurantSnapshot) {
-//     var restaurantIDs = [];
-//     console.log(restaurantSnapshot)
-
-//     // restaurantSnapshot.forEach(function(childSnapshot) {
-//     //     var item = childSnapshot.val();
-//     //     // item.key = childSnapshot.key;
-
-//     //     restaurantIDs.push(item);
-//     // });
-//     for (var k = 0; k < restaurantSnapshot.length; k++) {
-//         restaurantIDs.push(restaurantSnapshot[k]);
-//         return restaurantIDs;
-//     }
-// };

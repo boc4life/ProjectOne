@@ -45,4 +45,3 @@ function addRestaurant() {
     // Add the value of "data-id" on the yes button to the city's Firebase. If a user is logged in, maybe attach their username to be displayed to all visitors (e.g. Jim's - Added by _______)?
 }
 
-$(document).on("click", ".yesBtn", addRestaurant);
