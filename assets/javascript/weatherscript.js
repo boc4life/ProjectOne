@@ -1,4 +1,5 @@
-$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=philadelphia&appid=024da1946af1ea1a5b7e6fecc2ca1dc5").then(function(weatherResponse) {
+function displayWeather(weatherCity) {
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + weatherCity + "&appid=024da1946af1ea1a5b7e6fecc2ca1dc5").then(function(weatherResponse) {
     console.log(weatherResponse);
     if (weatherResponse.weather[0].id >= 200 && weatherResponse.weather[0].id < 300) {
         $("#weatherImageBox").prepend("<img class=weatherImage src=assets/images/thunderstorm.png>");
@@ -26,3 +27,4 @@ $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=philadelphia&appid=0
     $("#temperature").prepend(tempDisplay);
     $("#clouds").text(weatherResponse.clouds.all)
 })
+}

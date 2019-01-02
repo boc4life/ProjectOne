@@ -7,20 +7,47 @@
 // Option Three: Don't make restaurants clickable, just display more restaurant info while the carousel is running.
 // Other options or ideas are welcome and encouraged. I'm just writing out what's coming to my mind now.
 
-var city = "Philadelphia"
-var cityBlurb = "Founded in 1682, Philadelphia is one of the most historic cities in the United States. Visitors can immerse themselves in American history, while exploring a city full of culture and cheesesteaks."
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCkRM_8C5obGVgwlWk87Oen6gpaA475yBE",
+    authDomain: "rutgersinfocities.firebaseapp.com",
+    databaseURL: "https://rutgersinfocities.firebaseio.com",
+    projectId: "rutgersinfocities",
+    storageBucket: "rutgersinfocities.appspot.com",
+    messagingSenderId: "763372287123"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
 
-$("#cityName").text(city);
-$("#cityBlurb").text(cityBlurb);
+var city;
+var cityDisplay;
+var cityBlurb;
+var restaurantIDs;
+var activeSet;
+var lat;
+var lng;
+var latlng;
 
-$.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
+$(document).ready(function() {
 
-var service;
-var activeSet = false;
+renderCity();
+$(".navbarCity").on("click", navbarClick);
+})
+// var city = "Philadelphia"
+// var cityBlurb = "Founded in 1682, Philadelphia is one of the most historic cities in the United States. Visitors can immerse themselves in American history, while exploring a city full of culture and cheesesteaks."
 
-var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
+// $("#cityName").text(city);
+// $("#cityBlurb").text(cityBlurb);
+
+// $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
+
+// var service;
+// var activeSet = false;
+
+// var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
 
 function loadCarousel() {
+    console.log(restaurantIDs);
     for (var i = 0; i < restaurantIDs.length; i++) {
         var request = {
             placeId: restaurantIDs[i],
@@ -48,3 +75,66 @@ function callback(results, status) {
         $("#carouselExampleIndicators").append(newDiv);
     }
 }
+
+function navbarClick () {
+    console.log("CLICK");
+    var city = $(this).attr("data-name");
+    $("#cityName").empty();
+    $("#cityBlurb").empty();
+    $("#carouselExampleIndicators").empty();
+    $("#searchResultsContainer").empty();
+    $("#temperature").empty();
+    $("#clouds").empty();
+    $("#weatherImageBox").empty();
+    $("#seatGeekTable").empty();
+    localStorage.setItem("currentCity", city);
+    renderCity();
+}
+
+function renderCity() {
+    city = localStorage.getItem("currentCity")
+
+    database.ref(city + "/").once("value", function (citySnapshot){
+        var snap = citySnapshot.val();
+        restaurantIDs = snap.restaurants;
+        cityBlurb = snap.cityBlurb;
+        cityDisplay = snap.name;
+        latlng = snap.latlng;
+        console.log(restaurantIDs);
+        // snapshotToArray(snap.restaurants);
+        $("#cityBlurb").text(cityBlurb);
+        $("#cityName").text(cityDisplay);
+        displaySeatGeek();
+        displayRestaurants();
+        displayWeather(city);
+    })
+
+}
+    function displayRestaurants() {
+        var service;
+        activeSet = false;
+
+        $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
+
+    // var service;
+    // var activeSet = false;
+
+    }
+    // var restaurantIDs = ["ChIJUSZwpwjGxokRpPURfAyTF1g", "ChIJOxKK_y_GxokRAcSUh1dzBbM", "ChIJxZ3RpTi0xokRhRTe7KSgpJo"]
+
+
+// function snapshotToArray(restaurantSnapshot) {
+//     var restaurantIDs = [];
+//     console.log(restaurantSnapshot)
+
+//     // restaurantSnapshot.forEach(function(childSnapshot) {
+//     //     var item = childSnapshot.val();
+//     //     // item.key = childSnapshot.key;
+
+//     //     restaurantIDs.push(item);
+//     // });
+//     for (var k = 0; k < restaurantSnapshot.length; k++) {
+//         restaurantIDs.push(restaurantSnapshot[k]);
+//         return restaurantIDs;
+//     }
+// };
