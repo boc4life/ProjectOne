@@ -43,12 +43,11 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 })
 
-
 $(document).ready(function() {
 
 renderCity();
 $(".navbarCity").on("click", navbarClick);
-$(document).on("click", ".yesBtn", addRestaurant);
+$(document).on("click", ".yesButton", addRestaurant);
 $("#signInBtn").on("click", signIn);
 $("#registerBtn").on("click", register);
 })
@@ -153,24 +152,22 @@ function renderCity() {
 
     database.ref(city + "/").once("value", function (citySnapshot){
         var snap = citySnapshot.val();
-        restaurantIDs = snap.restaurants;
         cityBlurb = snap.cityBlurb;
         cityDisplay = snap.name;
         latlng = snap.latlng;
-        console.log(restaurantIDs);
-        // snapshotToArray(snap.restaurants);
+        restaurantIDs = Object.values(snap.restaurants);
+        console.log(restaurantIDs)
         $("#cityBlurb").text(cityBlurb);
         $("#cityName").text(cityDisplay);
         displaySeatGeek();
         displayRestaurants();
         displayWeather(city);
     })
-
 }
     function displayRestaurants() {
         var service;
         activeSet = false;
 
-        $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
+        $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
 
     }
