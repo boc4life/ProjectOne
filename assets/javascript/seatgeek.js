@@ -3,10 +3,11 @@ function displaySeatGeek () {
         var sgSnap = citySnapshot.val();
         lat = sgSnap.lat;
         lng = sgSnap.lng;
+        console.log(lat, lng);
     }).then(function(){
 
-    var queryURL = "https://api.seatgeek.com/2/events?lat=" + lat + "&lon=" + lng + "&type=concert&client_id=MYKEY"
-
+    var queryURL = "https://api.seatgeek.com/2/events?lat=" + lat + "&lon=" + lng + "&taxonomies.name=concert&listing_count.gt=0&client_id=MTQ2ODg3ODd8MTU0NjM3NTgzMS43NQ"
+    console.log(queryURL)
 $.ajax({
     url: queryURL,
     method: "GET"
