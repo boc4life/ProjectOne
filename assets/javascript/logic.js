@@ -31,15 +31,16 @@ var user = false;
 var uid;
 var userDisplay;
 
-var user = firebase.auth().currentUser;
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
+firebase.auth().onAuthStateChanged(function (fbUser) {
+  if (fbUser) {
+    user = firebase.auth().currentUser;
       console.log(user)
       $(".signIn").addClass("d-none");
       $(".signIn").removeClass("d-inline");
       $("#profileLink").text(user.displayName);
       $("#profileLink").removeClass("d-none");
       uid = user.uid;
+      console.log(uid);
   }
 })
 

@@ -32,6 +32,7 @@ function searchCallback (searchResults, status) {
         yesBtn.addClass("yesButton");
         yesBtn.text("Yes");
         $("#searchResultsContainer").append(yesBtn);
+        console.log(user);
     }
 }
 
@@ -40,6 +41,5 @@ function addRestaurant() {
     var newRest = $(this).attr("data-ID");
     console.log(newRest);
     database.ref(city + "/restaurants").push(newRest);
-
 }
 
