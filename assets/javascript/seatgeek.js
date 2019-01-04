@@ -6,7 +6,7 @@ function displaySeatGeek () {
         console.log(lat, lng);
     }).then(function(){
 
-    var queryURL = "https://api.seatgeek.com/2/events?lat=" + lat + "&lon=" + lng + "&taxonomies.name=concert&listing_count.gt=0&client_id=MTQ2ODg3ODd8MTU0NjM3NTgzMS43NQ"
+    var queryURL = "https://api.seatgeek.com/2/events?lat=" + lat + "&lon=" + lng + "&taxonomies.name=concert&listing_count.gt=0&client_id=MYKEY"
     console.log(queryURL)
 $.ajax({
     url: queryURL,

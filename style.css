@@ -1,3 +1,20 @@
+#background {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+body {
+    color: #40e0d0;
+}
+
 .mynav {
     padding-right: .5rem;
     padding-left: .5rem;
@@ -66,10 +83,11 @@
 #restaurantSearch {
     text-align: left;
 }
-
-.carousel-control-next {
-    color: grey;
-}
+/* 
+.carousel-inner > .carousel-item {
+    height:350px;
+    width:350px;
+} */
 
 .icon {
     background-color: black;
@@ -87,6 +105,7 @@
 #weatherBox {
     margin-top: 5px;
     background-color:yellow;
+    color: black;
 }
 
 #weatherData {
@@ -102,4 +121,5 @@
 #seatGeekBox {
     background-color: #4dff4d;
     margin-top: 5px;
+    color: black;
 }
