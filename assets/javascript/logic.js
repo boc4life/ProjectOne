@@ -40,8 +40,8 @@ firebase.auth().onAuthStateChanged(function (fbUser) {
       $("#profileLink").text(user.displayName);
       $("#profileLink").removeClass("d-none");
       uid = user.uid;
-      console.log(uid);
-  }
+      localStorage.setItem("uid", uid);
+    }
 })
 
 $(document).ready(function() {

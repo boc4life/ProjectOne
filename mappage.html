@@ -7,7 +7,8 @@
     height:569px;
     width:920px;
 }
-#container {
+
+#mapContainer {
     position:relative;
     height: 569px;
     width: 920px;
@@ -101,16 +102,23 @@
                 </div>
             </div>
         </div>
-<div class="jumbotron w-25 mx-auto">
+<div class="jumbotron w-25 mx-auto" id="profileTron">
     <div class="container" id="profileHead">
     <h1><span id="profileUserName"></span></h1>
     <p id="memberSince">Member since: </p><span id="memberSinceSpan"></span>
-    <button class="btn" id="logoutBtn">Log Out</button>
+    <!-- <button class="btn" id="logoutBtn">Log Out</button> -->
     </div>
 </div>
 
-<div id="container">
-<img src="assets\images\usmap.png" id="map">
+<div class="container-fluid d-flex" id="mapSectionContainer">
+    <div id="mapContainer">
+        <img src="assets\images\usmap.png" id="map">
+    </div>
+    <div class="container border border-dark" id="citiesVisitedBox"><h3><u>Cities Visited</u></h3>
+        <p id="mapInstructions">Click the markers on the map to mark the cities you've visited!</p>
+        <table class="table table-borderless" id="citiesVisitedTable">
+        </table>
+    </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>

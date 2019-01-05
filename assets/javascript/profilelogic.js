@@ -1,8 +1,3 @@
-$(document).on("click", ".cityMarkerImg", pointClick)
-$("#signInBtn").on("click", signIn);
-$("#registerBtn").on("click", register);
-$("#logoutBtn").on("click", logout)
-
 var uid;
 var citiesArray;
 var citiesVisitedArray;
@@ -20,25 +15,34 @@ var config = {
   var database = firebase.database();
 
   var user = firebase.auth().currentUser;
-  console.log(user);
 
   firebase.auth().onAuthStateChanged(function (fbUser) {
     if (fbUser) {
       user = firebase.auth().currentUser;
-        console.log(user.displayName)
+        uid = user.uid;
+        var displayName = user.displayName
         $(".signIn").addClass("d-none");
         $(".signIn").removeClass("d-inline");
-        $("#profileLink").text(user.displayName);
-        $("#profileUserName").text(user.displayName)
+        $("#profileLink").text(displayName);
+        $("#profileUserName").text(displayName)
         $("#profileLink").removeClass("d-none");
-        uid = user.uid;
-        console.log(uid);
-        testSnap()
+        localStorage.setItem("uid", uid);
     }
     if (!fbUser) {
         $(".signIn").removeClass("d-none").addClass("d-inline");
         $("#profileLink").addClass("d-none")
     }
+  })
+
+  $(document).ready(function(){
+    uid = localStorage.getItem("uid")
+    adjustMarkers();
+    $(document).on("click", ".cityMarkerImg", pointClick);
+    $(".navbarCity").on("click", navbarClick);
+    $("#signInBtn").on("click", signIn);
+    $("#registerBtn").on("click", register);
+    $("#logoutBtn").on("click", logout);
+    $(document).on("click", ".removeBtn", removeCity);
   })
 
 var points = [
@@ -76,7 +80,7 @@ function drawPoint(point){
             div.append(img)
             div.css("top", point.y)
             div.css("left", point.x)
-            $("#container").append(div)
+            $("#mapContainer").append(div)
 }
 for (var i = 0; i < points.length; i++) {
   drawPoint(points[i]);
@@ -87,8 +91,22 @@ function pointClick() {
     var isClicked = $(this).attr("data-clicked")
     console.log(clickedCity)
     if (isClicked == "no") {
+        var cityNameDisplay = clickedCity;
+        cityNameDisplay = cityNameDisplay.replace(/-/g, " ")
         $(this).attr("src", "assets/images/checkmark.png");
         $(this).attr("data-clicked", "yes");
+        var newRow = $("<tr>");
+        var newCity = $("<td>");
+        var newButtonDiv = $("<td>");
+        var newButton = $("<button>");
+        newCity.append(cityNameDisplay);
+        newRow.attr("id", clickedCity + "TableRow");
+        newButton.addClass("btn-small btn-danger removeBtn");
+        newButton.attr("data-id", clickedCity);
+        newButton.text("X");
+        newButtonDiv.append(newButton);
+        newRow.append(newCity).append(newButtonDiv);
+        $("#citiesVisitedTable").append(newRow)
         database.ref("users/" + uid + "/citiesVisited").update({
             [clickedCity]: "yes"
         })
@@ -98,6 +116,7 @@ function pointClick() {
         database.ref("users/" + uid + "/citiesVisited").update({
             [clickedCity]: "no"
         })
+        $("#" + clickedCity + "TableRow").remove();
 }
 }
 
@@ -175,16 +194,47 @@ function signIn() {
     firebase.auth().signOut()
   }
 
-  function testSnap() {
+  function adjustMarkers() {
       database.ref("users/" + uid + "/citiesVisited").once("value").then(function(userSnapshot){
         userSnap = userSnapshot.val();
         citiesArray = Object.entries(userSnap);
         for (var [cityName, visited] of citiesArray) {
             if (visited == "yes") {
-                console.log(cityName)
+                var cityNameDisplay = cityName;
+                cityNameDisplay = cityNameDisplay.replace(/-/g, " ");
+                console.log(cityNameDisplay);
                 $("#" + cityName).attr("src", "assets/images/checkmark.png")
                 $("#" + cityName).attr("data-clicked", "yes")
+                var newRow = $("<tr>");
+                var newCity = $("<td>");
+                var newButtonDiv = $("<td>");
+                var newButton = $("<button>");
+                newCity.append(cityNameDisplay);
+                newRow.attr("id", cityName + "TableRow");
+                newButton.addClass("btn-small btn-danger removeBtn");
+                newButton.attr("data-id", cityName);
+                newButton.text("X");
+                newButtonDiv.append(newButton);
+                newRow.append(newCity).append(newButtonDiv);
+                $("#citiesVisitedTable").append(newRow)
             }
         }
     })
+}
+
+function removeCity() {
+    var clickedBtn = $(this).attr("data-id");
+    console.log(clickedBtn);
+    $("#" + clickedBtn).attr("src", "assets/images/emptymarker.png");
+    $("#" + clickedBtn + "TableRow").remove();
+    database.ref("users/" + uid + "/citiesVisited").update({
+        [clickedBtn]: "no"
+    })
+}
+
+function navbarClick () {
+    console.log("Click");
+    city = $(this).attr("data-name");
+    localStorage.setItem("currentCity", city);
+    window.open("examplecitypage.html","_self");
 }

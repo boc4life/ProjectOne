@@ -20,6 +20,10 @@ body {
     text-align:center;
 }
 
+#profileTron {
+    padding: 1rem;
+}
+
 #memberSince {
     font-family: 'Cinzel', serif;
     font-family: 'Source Serif Pro', serif;
@@ -31,4 +35,28 @@ body {
 
 .cityMarker {
     cursor: pointer;
+}
+
+#citiesVisitedBox {
+    text-align: center;
+    position: relative;
+}
+
+#mapSectionContainer {
+    width: 75%
+}
+
+#mapInstructions {
+    padding-top: .25rem;
+    margin-bottom: .5rem;
+}
+
+.table tr td:first-child {
+    padding-right:0;
+    width: 160px;
+}
+
+.table td {
+    padding-bottom: 0;
+    padding-top:.5rem;
 }
