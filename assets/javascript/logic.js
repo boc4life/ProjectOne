@@ -75,8 +75,28 @@ function register() {
         user.updateProfile({
             displayName: username
         });
-        userDisplay = username;
-        return userDisplay
+        database.ref("users/" + uid).set({
+            Philadelphia: false,
+            'New York': false,
+            'Los Angeles': false,
+            Chicago: false,
+            Phoenix: false,
+            Houston: false,
+            'San Francisco': false,
+            'Washington DC': false,
+            Denver: false,
+            Miami: false,
+            Seattle: false,
+            Boston: false,
+            'New Orleans': false,
+            Memphis: false,
+            Dallas: false,
+            Charlotte: false,
+            Detroit: false,
+            Baltimore: false,
+            'Kansas City': false,
+            Atlanta: false
+        })
       })
 }
 

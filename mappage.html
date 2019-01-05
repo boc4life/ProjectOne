@@ -13,9 +13,9 @@
     width: 920px;
 }
 .cityMarker {
-    height: 25px;
-    width: 25px;
-    background: url("http://www.myiconfinder.com/uploads/iconsets/256-256-f900504cdc9f243b1c6852985c35a7f7.png");
+    /* height: 25px;
+    width: 25px; */
+    /* background: url("assets/images/emptymarker.png"); */
     position: absolute;
     background-repeat:no-repeat;
     background-size: cover;
@@ -23,71 +23,98 @@
     -moz-opacity: 1.0;
     -webkit-opacity: 1.0;
 }
+
+.cityMarkerImg {
+    height: 25px;
+    width: 25px;
+}
+
         </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    </head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="profilestyle.css">    </head>
 <body>
-<div id="container">
-<img src="assets\images\usmap.png" id="map">
-<!-- <map name="Map">
-    <area alt="" title="" href="index.html" shape="rect" coords="789,210,793,208">
-    <area alt="" title="" href="index.html" shape="rect" coords="815,189,810,185">
-    <area alt="" title="" href="#" shape="rect" coords="76,329">
-    <area alt="" title="" href="#" shape="rect" coords="591,200">
-    <area alt="" title="" href="#" shape="rect" coords="182,354">
-    <area alt="" title="" href="#" shape="rect" coords="481,469">
-    <area alt="" title="" href="#" shape="rect" coords="35,234">
-    <area alt="" title="" href="#" shape="rect" coords="773,242">
-    <area alt="" title="" href="#" shape="rect" coords="323,250">
-    <area alt="" title="" href="#" shape="rect" coords="768,514">
-    <area alt="" title="" href="#" shape="rect" coords="101,27">
-    <area alt="" title="" href="#" shape="rect" coords="846,150">
-    <area alt="" title="" href="#" shape="rect" coords="580,456">
-    <area alt="" title="" href="#" shape="rect" coords="570,344">
-    <area alt="" title="" href="#" shape="rect" coords="447,409">
-    <area alt="" title="" href="#" shape="rect" coords="716,326">
-    <area alt="" title="" href="#" shape="rect" coords="662,186">
-    <area alt="" title="" href="#" shape="rect" coords="780,230">
-    <area alt="" title="" href="#" shape="rect" coords="489,263">
-    <area alt="" title="" href="#" shape="rect" coords="668,365">
-</map> -->
+    <div class="container" id="mainNav">
+            <div class="main">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="#">InfoCities</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Cities
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item navbarCity" data-name="philadelphia">Philadelphia</a>
+                                    <a class="dropdown-item navbarCity" data-name="newyork">New York</a>
+                                    <a class="dropdown-item navbarCity" data-name="chicago">Chicago</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                </ul>
+                                <ul class="navbar-nav d-inline my-2 my-lg-0">
+                                    <li class="nav-item dropdown d-inline mynav signIn">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Register
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <input id="registerEmail">Email</input>
+                                            <br>
+                                            <input id="registerPassword">Password</input>
+                                            <br>
+                                            <input id="registerUsername">Username</input>
+                                            <br><button class="btn btn-dark" id="registerBtn">Submit</button>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown d-inline mynav signIn">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Sign In
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <input id="signInEmail">Email</input>
+                                            <br>
+                                            <input id="signInPassword">Password</input>
+                                            <br>
+                                            <br><button class="btn btn-dark" id="signInBtn">Submit</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav">
+                                <a class="nav-link d-none" id="profileLink" href="profile.html"></a>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="jumbotron w-25 mx-auto">
+    <div class="container" id="profileHead">
+    <h1><span id="profileUserName"></span></h1>
+    <p id="memberSince">Member since: </p><span id="memberSinceSpan"></span>
+    <button class="btn" id="logoutBtn">Log Out</button>
+    </div>
 </div>
 
-<script type="text/javascript">
-var points = [
-    {x:780, y:190, city: "Philadelphia"}, 
-    {x:801, y:170, city: "New York"},
-    {x:68, y:309, city: "Los Angeles"},
-    {x:580, y:180, city: "Chicago"},
-    {x:172, y:334, city: "phoenix"},
-    {x:471, y:447, city: "houston"},
-    {x:25, y:214, city: "san francisco"},
-    {x:761, y:220, city: "washington dc"},
-    {x:313, y:227, city: "denver"},
-    {x:758, y:494, city: "miami"},
-    {x:89, y:12, city: "seattle"},
-    {x:834, y:128, city: "boston"},
-    {x:570, y:433, city: "new orleans"},
-    {x:558, y:321, city: "memphis"},
-    {x:437, y:386, city: "dallas"},
-    {x:706, y:303, city: "charlotte"},
-    {x:652, y:163, city: "detroit"},
-    {x:769, y:210, city: "baltimore"},
-    {x:476, y:243, city: "kansas city"},
-    {x:658, y:345, city: "atlanta"},
-    
-]
-function drawPoint(point){   
-        div = $("<div />")
-            div.attr("class", 'cityMarker')
-            div.css("top", point.y)
-            div.css("left", point.x)
-            $("#container").append(div)
-}
-for (var i = 0; i < points.length; i++) {
-  drawPoint(points[i]);
-}
-console.log("hello")
-</script>
+<div id="container">
+<img src="assets\images\usmap.png" id="map">
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script type="text/javascript" src="assets/javascript/profilelogic.js"></script>
+
 </body>
 </html>
