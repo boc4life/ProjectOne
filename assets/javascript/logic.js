@@ -51,6 +51,8 @@ $(".navbarCity").on("click", navbarClick);
 $(document).on("click", ".yesButton", addRestaurant);
 $("#signInBtn").on("click", signIn);
 $("#registerBtn").on("click", register);
+$(document).on("click", "#wishListAdd", wishListAdd)
+$(document).on("click", ".removeBtn", removeWishItem)
 })
 
 function register() {
@@ -171,7 +173,8 @@ function navbarClick () {
 }
 
 function renderCity() {
-    city = localStorage.getItem("currentCity")
+    city = localStorage.getItem("currentCity");
+    uid = localStorage.getItem("uid");
 
     database.ref(city + "/").once("value", function (citySnapshot){
         var snap = citySnapshot.val();
@@ -186,6 +189,9 @@ function renderCity() {
         $("#background").css("background-image", "url(assets/images/" + backgroundImg)
         $("#cityBlurb").text(cityBlurb);
         $("#cityName").text(cityDisplay);
+        $("#wishListCity").text(cityDisplay);
+        $("#wishListTable").empty();
+        displayWishList();
         displaySeatGeek();
         displayRestaurants();
         displayWeather(lat, lng);
@@ -196,5 +202,62 @@ function renderCity() {
         activeSet = false;
 
         $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
+    }
 
+    function wishListAdd() {
+        var newItemInput = $("#wishListInput").val().trim();
+        var newRow = $("<tr>");
+        var newItemDiv = $("<td>");
+        var newButtonDiv = $("<td>");
+        var newButton = $("<button>");
+        var newItemKey = database.ref().child("users/" + uid + "/wishLists/" + city).push().key;
+        newItemDiv.append(newItemInput);
+        newButton.addClass("btn-small btn-danger removeBtn");
+        newButton.attr("data-id", newItemKey);
+        newButton.text("X");
+        newButtonDiv.append(newButton);
+        newRow.attr("id", newItemKey + "TableRow");
+        newRow.append(newItemDiv).append(newButtonDiv);
+        $("#wishListTable").append(newRow);
+        database.ref("users/" + uid + "/wishLists/" + city + "/" + newItemKey).set({
+            item: newItemInput
+        })
+    }
+
+    function displayWishList() {
+        database.ref("users/" + uid + "/wishLists/" + city).once("value", function(listSnapshot) {
+        var listSnap = listSnapshot.val();
+        var listObjects = [];
+        var listItems = [];
+        var listKeys = [];
+        listKeys = Object.keys(listSnap);
+        listObjects = Object.values(listSnap);
+        console.log(listKeys);
+        listObjects.forEach(function(obj){
+            var newItem = obj.item;
+            listItems.push(newItem);
+        })
+        console.log(listItems);
+        for (i = 0; i < listItems.length; i++) {
+            var newItemInput = listItems[i];
+            var newRow = $("<tr>");
+            var newItemDiv = $("<td>");
+            var newButtonDiv = $("<td>");
+            var newButton = $("<button>");
+            newItemDiv.append(newItemInput);
+            newButton.addClass("btn-small btn-danger removeBtn");
+            newButton.attr("data-id", listKeys[i]);
+            newButton.text("X");
+            newButtonDiv.append(newButton);
+            newRow.attr("id", listKeys[i] + "TableRow")
+            newRow.append(newItemDiv).append(newButtonDiv);
+            $("#wishListTable").append(newRow);
+        }
+        })
+    }
+
+    function removeWishItem () {
+        var itemKey = $(this).attr("data-id");
+        database.ref("users/" + uid + "/wishLists/" + city + "/" + itemKey).remove();
+        $("#" + itemKey + "TableRow").remove();
     }
