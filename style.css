@@ -63,7 +63,9 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    height: 425px;
+    height: 500px;
+    background-color: #ffcccc;
+    color: #003300;
 }
 
 #restaurantHead {

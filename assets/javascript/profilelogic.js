@@ -37,6 +37,7 @@ var config = {
   $(document).ready(function(){
     uid = localStorage.getItem("uid")
     adjustMarkers();
+    loadWishLists();
     $(document).on("click", ".cityMarkerImg", pointClick);
     $(".navbarCity").on("click", navbarClick);
     $("#signInBtn").on("click", signIn);
@@ -237,4 +238,19 @@ function navbarClick () {
     city = $(this).attr("data-name");
     localStorage.setItem("currentCity", city);
     window.open("examplecitypage.html","_self");
+}
+
+function loadWishLists () {
+    database.ref("users/" + uid + "/wishLists").once("value", function(citiesListSnap) {
+        citiesList = citiesListSnap.val();
+        console.log(citiesList);
+        parsedCitiesList = [];
+        parsedCitiesList = Object.keys(citiesList);
+        console.log(parsedCitiesList);
+        for (var i = 0; i < parsedCitiesList.length; i++){
+        var listItem = $("<li class='list-group-item'>")
+        listItem.append(parsedCitiesList[i]);
+        $("#wishListCities").append(listItem);
+        }
+    })
 }

@@ -149,7 +149,7 @@ function callback(results, status) {
         var name = $("<p>");
         image.attr("src", results.photos[0].getUrl({"madWidth": 350, "maxHeight": 350}));
         name.append(results.name);
-        newDiv.append(image).append(name);
+        newDiv.append(name).append(image);
         console.log(newDiv);
         $("#carousel-inner").append(newDiv);
     }
@@ -201,7 +201,7 @@ function renderCity() {
         var service;
         activeSet = false;
 
-        $.getScript("http://maps.google.com/maps/api/js?key=MYKEY&libraries=places&callback=loadCarousel");
+        $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
     }
 
     function wishListAdd() {
