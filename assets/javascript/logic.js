@@ -206,6 +206,7 @@ function renderCity() {
 
     function wishListAdd() {
         var newItemInput = $("#wishListInput").val().trim();
+        $("#wishListInput").val("");
         var newRow = $("<tr>");
         var newItemDiv = $("<td>");
         var newButtonDiv = $("<td>");
