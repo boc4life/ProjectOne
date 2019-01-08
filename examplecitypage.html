@@ -76,29 +76,13 @@
         </div>
         <div class="row">
             <div class="col-sm-8">
-                <span id="cityName"></span>
+                <div id="cityNameDiv">
+                    <span id="cityName"></span>
+                </div>
             <br>
             <br>
                 <div class="container-fluid mx-auto w-75" id="cityOpen">
                     <span id="cityBlurb"></span>
-                </div>
-                <div class="container-fluid" id="wishListContainer">
-                    <div class="row">
-                        <div class="col-sm-4 border border-dark">
-                            Make a to-do list for <span id="wishListCity"></span>
-            <br><br>
-                            <div class="input-group">
-                                <input type="text" class="w-75" id="wishListInput">
-                                <div class="input-group-append">
-                                <button class="input-group-append" id="wishListAdd">Add</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 border border-dark">
-                            <table class="table table-borderless" id="wishListTable">
-                            </table>
-                        </div>
-                    </div>
                 </div>
             <br>
             <br>
@@ -112,18 +96,35 @@
                 </div>
             <br>
             <br>
-                <div id="restaurantAdd">
-                    <div class="input-group">
-                        <input type="text" class="input-group-text w-25" id="restaurantSearch"></input>
+                <div class="container d-flex" id="restaurantAdd">
+                    <div class="input-group" id="searchInputGroup">
+                        <input type="text" class="input-group-text w-75" id="restaurantSearch"></input>
                         <div class="input-group-append">
                             <button class="input-group-append" id="restaurantSearchBtn">Search</button>
                         </div>
                     </div>
                     <p id="addRestText" class="mr-auto">Have a restaurant you'd like to add to our list? Search for it here!</p>
-            <br>
+                </div>
                     <div class="container" id="searchResultsContainer">
                     </div>
-                </div>
+                <div class="container-fluid d-none" id="wishListContainer">
+                        <div class="row">
+                            <div class="col-sm-4 border border-dark wishListRow">
+                                Make a to-do list for <span id="wishListCity"></span>
+                <br><br>
+                                <div class="input-group">
+                                    <input type="text" class="w-75" id="wishListInput">
+                                    <div class="input-group-append">
+                                    <button class="input-group-append" id="wishListAdd">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 border border-dark wishListRow">
+                                <table class="table table-borderless" id="wishListTable">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="col-sm-4">
                 <div class="container-fluid border border-dark" id="sidebar">

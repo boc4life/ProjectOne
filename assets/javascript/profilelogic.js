@@ -198,7 +198,9 @@ function signIn() {
   function adjustMarkers() {
       database.ref("users/" + uid + "/citiesVisited").once("value").then(function(userSnapshot){
         userSnap = userSnapshot.val();
+        console.log(userSnap);
         citiesArray = Object.entries(userSnap);
+        console.log(citiesArray)
         for (var [cityName, visited] of citiesArray) {
             if (visited == "yes") {
                 var cityNameDisplay = cityName;

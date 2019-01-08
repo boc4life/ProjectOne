@@ -29,6 +29,20 @@ body {
     display: inline;
 }
 
+#cityNameDiv {
+    margin: auto;
+}
+
+#cityOpen {
+    border: solid;
+    border-color: white;
+    color: black;
+    background-color: rgb(143, 195, 241);
+    border-radius: 20px;
+    max-width: 450px;
+    padding: 2rem;
+}
+
 #cityName {
     font-family: 'Cinzel', serif;
     font-weight: bold;
@@ -46,8 +60,12 @@ body {
 
 #wishListContainer {
     margin-top: 1rem;
-    background-color: #d6d6c2;
+    background-color: rgb(190, 189, 89);
     color: black;
+}
+
+.wishListRow {
+    padding: 1rem 0;
 }
 
 #sidebar {
@@ -64,7 +82,7 @@ body {
     font-weight: bold;
     text-align: center;
     height: 500px;
-    background-color: #ffcccc;
+    background-color: rgb(143, 195, 241);
     color: #003300;
 }
 
@@ -90,6 +108,22 @@ body {
 
 #restaurantSearch {
     text-align: left;
+}
+
+#searchResultsContainer {
+    background-color: rgb(143, 195, 241);
+    color: black;
+}
+
+#searchInputGroup {
+    text-align: center;
+}
+
+#restaurantAdd {
+    text-align: center;
+    background-color: rgb(143, 195, 241);
+    color: black;
+    align-items: center;
 }
 /* 
 .carousel-inner > .carousel-item {

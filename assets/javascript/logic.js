@@ -19,6 +19,8 @@
   firebase.initializeApp(config);
   var database = firebase.database();
 
+  console.log("hello")
+
 var city;
 var cityDisplay;
 var cityBlurb;
@@ -39,6 +41,7 @@ firebase.auth().onAuthStateChanged(function (fbUser) {
       $(".signIn").removeClass("d-inline");
       $("#profileLink").text(user.displayName);
       $("#profileLink").removeClass("d-none");
+      $("#wishListContainer").removeClass("d-none")
       uid = user.uid;
       localStorage.setItem("uid", uid);
     }
@@ -77,27 +80,27 @@ function register() {
         user.updateProfile({
             displayName: username
         });
-        database.ref("users/" + uid).set({
-            Philadelphia: false,
-            'New York': false,
-            'Los Angeles': false,
-            Chicago: false,
-            Phoenix: false,
-            Houston: false,
-            'San Francisco': false,
-            'Washington DC': false,
-            Denver: false,
-            Miami: false,
-            Seattle: false,
-            Boston: false,
-            'New Orleans': false,
-            Memphis: false,
-            Dallas: false,
-            Charlotte: false,
-            Detroit: false,
-            Baltimore: false,
-            'Kansas City': false,
-            Atlanta: false
+        database.ref("users/" + uid + "/citiesVisited").set({
+            Philadelphia: "no",
+            'New-York': "no",
+            'Los-Angeles': "no",
+            Chicago: "no",
+            Phoenix: "no",
+            Houston: "no",
+            'San-Francisco': "no",
+            'Washington-DC': "no",
+            Denver: "no",
+            Miami: "no",
+            Seattle: "no",
+            Boston: "no",
+            'New-Orleans': "no",
+            Memphis: "no",
+            Dallas: "no",
+            Charlotte: "no",
+            Detroit: "no",
+            Baltimore: "no",
+            'Kansas-City': "no",
+            Atlanta: "no"
         })
       })
 }
