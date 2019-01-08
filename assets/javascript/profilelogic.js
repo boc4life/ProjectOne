@@ -2,6 +2,7 @@ var uid;
 var citiesArray;
 var citiesVisitedArray;
 var cityName;
+var cityDisplay;
 
 var config = {
     apiKey: "AIzaSyCkRM_8C5obGVgwlWk87Oen6gpaA475yBE",
@@ -26,7 +27,9 @@ var config = {
         $("#profileLink").text(displayName);
         $("#profileUserName").text(displayName)
         $("#profileLink").removeClass("d-none");
-        localStorage.setItem("uid", uid);
+        adjustMarkers();
+        loadWishLists();
+        appendJoinDate();
     }
     if (!fbUser) {
         $(".signIn").removeClass("d-none").addClass("d-inline");
@@ -35,9 +38,6 @@ var config = {
   })
 
   $(document).ready(function(){
-    uid = localStorage.getItem("uid")
-    adjustMarkers();
-    loadWishLists();
     $(document).on("click", ".cityMarkerImg", pointClick);
     $(".navbarCity").on("click", navbarClick);
     $("#signInBtn").on("click", signIn);
@@ -248,11 +248,29 @@ function loadWishLists () {
         console.log(citiesList);
         parsedCitiesList = [];
         parsedCitiesList = Object.keys(citiesList);
-        console.log(parsedCitiesList);
+        parsedItemsObject = [];
+        parsedItemsObject = Object.values(citiesList);
+        console.log(parsedCitiesList, parsedItemsList);
         for (var i = 0; i < parsedCitiesList.length; i++){
-        var listItem = $("<li class='list-group-item'>")
-        listItem.append(parsedCitiesList[i]);
-        $("#wishListCities").append(listItem);
+        var listItem = $("<li class='list-group-item'>");
+        console.log(parsedCitiesList[i]);
+        database.ref(parsedCitiesList[i]).once("value", function(citySnap){
+            var citySnapshot = citySnap.val();
+            cityDisplay = citySnapshot.name;
+            console.log(cityDisplay);
+        }).then(function(){
+            listItem.append(cityDisplay);
+            $("#wishListCities").append(listItem);
+        })
         }
+    })
+}
+
+function appendJoinDate() {
+    database.ref("users/" + uid).once("value", function(profileSnap){
+        var profile = profileSnap.val();
+        console.log(profile);
+        var joinDate = profile.dateJoined;
+        $("#memberSinceSpan").text(joinDate);
     })
 }

@@ -105,12 +105,12 @@
 <div class="jumbotron w-25 mx-auto" id="profileTron">
     <div class="container" id="profileHead">
     <h1><span id="profileUserName"></span></h1>
-    <p id="memberSince">Member since: </p><span id="memberSinceSpan"></span>
+    <p id="memberSince">Member since: <span id="memberSinceSpan"></span></p>
     <!-- <button class="btn" id="logoutBtn">Log Out</button> -->
     </div>
 </div>
 
-<div class="container fluid">
+<div class="container fluid" id="listContainer">
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -120,6 +120,9 @@
                 <ul class="list-group list-group flush" id="wishListCities">
                 </ul>
             </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card d-none" id="wishListItems"></div>
         </div>
     </div>
 </div>

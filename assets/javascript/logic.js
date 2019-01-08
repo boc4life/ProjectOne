@@ -19,8 +19,6 @@
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  console.log("hello")
-
 var city;
 var cityDisplay;
 var cityBlurb;
@@ -36,16 +34,16 @@ var userDisplay;
 firebase.auth().onAuthStateChanged(function (fbUser) {
   if (fbUser) {
     user = firebase.auth().currentUser;
-      console.log(user)
-      $(".signIn").addClass("d-none");
-      $(".signIn").removeClass("d-inline");
-      $("#profileLink").text(user.displayName);
-      $("#profileLink").removeClass("d-none");
-      $("#wishListContainer").removeClass("d-none")
       uid = user.uid;
-      localStorage.setItem("uid", uid);
+      console.log(uid);
+      navbarUpdate();
     }
-})
+    if (!fbUser) {
+        $(".signIn").removeClass("d-none").addClass("d-inline");
+        $("#profileLink").addClass("d-none")
+    }
+}
+)
 
 $(document).ready(function() {
 
@@ -56,12 +54,14 @@ $("#signInBtn").on("click", signIn);
 $("#registerBtn").on("click", register);
 $(document).on("click", "#wishListAdd", wishListAdd)
 $(document).on("click", ".removeBtn", removeWishItem)
+$(document).on("click", "#logoutBtn", logout)
 })
 
 function register() {
     var email = $("#registerEmail").val().trim();
     var password = $("#registerPassword").val().trim();
     var username = $("#registerUsername").val().trim();
+    var signUpDate = moment().format("MMMM Do YYYY");
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -102,6 +102,9 @@ function register() {
             'Kansas-City': "no",
             Atlanta: "no"
         })
+        database.ref("users/" + uid).update({
+            dateJoined: signUpDate
+      })
       })
 }
 
@@ -127,6 +130,21 @@ function signIn() {
       uid = user.uid;
     })
   }
+
+  function logout() {
+    console.log("click")
+    firebase.auth().signOut()
+  }
+
+function navbarUpdate() {
+    user = firebase.auth().currentUser;
+    console.log(user);
+    $(".signIn").addClass("d-none");
+    $(".signIn").removeClass("d-inline");
+    $("#profileLink").removeClass("d-none");
+    $("#profileLink").text(user.displayName);
+    $("#wishListContainer").removeClass("d-none")
+}
 
 function loadCarousel() {
     console.log(restaurantIDs);
@@ -177,7 +195,6 @@ function navbarClick () {
 
 function renderCity() {
     city = localStorage.getItem("currentCity");
-    uid = localStorage.getItem("uid");
 
     database.ref(city + "/").once("value", function (citySnapshot){
         var snap = citySnapshot.val();
@@ -204,7 +221,7 @@ function renderCity() {
         var service;
         activeSet = false;
 
-        $.getScript("http://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
+        $.getScript("https://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
     }
 
     function wishListAdd() {

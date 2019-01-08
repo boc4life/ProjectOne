@@ -33,6 +33,14 @@ body {
     font-style: italic;
 }
 
+#memberSinceSpan {
+    font-style: normal;
+}
+
+#listContainer {
+    margin-bottom: 2rem;
+}
+
 .cityMarker {
     cursor: pointer;
 }
