@@ -104,6 +104,7 @@ function navbarClick () {
     $("#clouds").empty();
     $("#weatherImageBox").empty();
     $("#seatGeekTable").empty();
+    $("#kayakTable").empty();
     localStorage.setItem("currentCity", city);
     renderCity();
 }
@@ -129,6 +130,7 @@ function renderCity() {
         displayWishList();
         displaySeatGeek();
         displayRestaurants();
+        displayKayak();
         displayWeather(lat, lng);
     })
 }
