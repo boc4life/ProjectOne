@@ -3,6 +3,9 @@ var citiesArray;
 var citiesVisitedArray;
 var cityName;
 var cityDisplay;
+var cityDisplayArray = [];
+var listKeys = [];
+var listItems = [];
 
 var config = {
     apiKey: "AIzaSyCkRM_8C5obGVgwlWk87Oen6gpaA475yBE",
@@ -44,6 +47,7 @@ var config = {
     $("#registerBtn").on("click", register);
     $("#logoutBtn").on("click", logout);
     $(document).on("click", ".removeBtn", removeCity);
+    $(document).on("click", ".wishListCity", wishListDisplay)
   })
 
 var points = [
@@ -248,22 +252,25 @@ function loadWishLists () {
         console.log(citiesList);
         parsedCitiesList = [];
         parsedCitiesList = Object.keys(citiesList);
-        parsedItemsObject = [];
-        parsedItemsObject = Object.values(citiesList);
-        console.log(parsedCitiesList, parsedItemsList);
+        console.log(parsedCitiesList);
         for (var i = 0; i < parsedCitiesList.length; i++){
-        var listItem = $("<li class='list-group-item'>");
-        console.log(parsedCitiesList[i]);
         database.ref(parsedCitiesList[i]).once("value", function(citySnap){
             var citySnapshot = citySnap.val();
             cityDisplay = citySnapshot.name;
-            console.log(cityDisplay);
-        }).then(function(){
-            listItem.append(cityDisplay);
-            $("#wishListCities").append(listItem);
+            cityDisplayArray.push(cityDisplay)
         })
+      }
+      setTimeout(function() {
+        console.log(cityDisplayArray)
+        for (var j = 0; j < cityDisplayArray.length; j++) {
+        var listItem = $("<li class='list-group-item'>");
+        listItem.append(cityDisplayArray[j]);
+        listItem.addClass("wishListCity");
+        listItem.attr("data-listCity", parsedCitiesList[j]);
+        $("#wishListCities").append(listItem);
         }
-    })
+      },500)
+})
 }
 
 function appendJoinDate() {
@@ -273,4 +280,24 @@ function appendJoinDate() {
         var joinDate = profile.dateJoined;
         $("#memberSinceSpan").text(joinDate);
     })
+}
+
+function wishListDisplay () {
+    var listCity = $(this).attr("data-listCity");
+    $("#wishListUL").empty();
+    $("#wishListItems").removeClass("d-none");
+    database.ref("users/" + uid + "/wishLists/" + listCity).once("value", function(listSnapshot){
+        var listSnap = listSnapshot.val();
+        listKeys = Object.values(listSnap);
+        console.log(listKeys);
+    })
+    setTimeout(function() {
+        for (var i = 0; i < listKeys.length; i++) {
+        newItem = Object.values(listKeys[i])
+        console.log(newItem);
+        var listItem = $("<li class='list-group-item'>")
+        listItem.append(newItem);
+        $("#wishListUL").append(listItem);
+    }
+    }, 500)
 }

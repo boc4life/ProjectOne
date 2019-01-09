@@ -30,12 +30,16 @@ var latlng;
 var user = false;
 var uid;
 var userDisplay;
+var displayName;
 
 firebase.auth().onAuthStateChanged(function (fbUser) {
   if (fbUser) {
     user = firebase.auth().currentUser;
       uid = user.uid;
+      displayName = user.displayName;
+      console.log(user);
       console.log(uid);
+      console.log(displayName);
       navbarUpdate();
     }
     if (!fbUser) {
@@ -142,8 +146,11 @@ function navbarUpdate() {
     $(".signIn").addClass("d-none");
     $(".signIn").removeClass("d-inline");
     $("#profileLink").removeClass("d-none");
-    $("#profileLink").text(user.displayName);
     $("#wishListContainer").removeClass("d-none")
+    setTimeout(function(){
+        console.log(user.displayName);
+        $("#profileLink").text(user.displayName);
+    },1000)
 }
 
 function loadCarousel() {

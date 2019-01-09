@@ -41,6 +41,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.wishListCity {
+    cursor: pointer;
+}
+
 .cityMarker {
     cursor: pointer;
 }
