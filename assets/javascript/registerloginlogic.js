@@ -41,7 +41,8 @@ function register() {
             Detroit: "no",
             Baltimore: "no",
             'Kansas-City': "no",
-            Atlanta: "no"
+            Atlanta: "no",
+            'Las-Vegas': "no"
         })
         database.ref("users/" + uid).update({
             dateJoined: signUpDate

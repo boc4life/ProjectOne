@@ -83,8 +83,8 @@ var points = [
     {x:652, y:163, city: "Detroit"},
     {x:769, y:210, city: "Baltimore"},
     {x:476, y:243, city: "Kansas-City"},
-    {x:658, y:345, city: "Atlanta"}
-    
+    {x:658, y:345, city: "Atlanta"},
+    {x:134, y:274, city: "Las-Vegas"}
 ]
 function drawPoint(point){   
         div = $("<div />")
