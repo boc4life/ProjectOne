@@ -30,16 +30,15 @@ body {
 }
 
 #cityNameDiv {
-    margin: auto;
+    text-align: center;
 }
 
 #cityOpen {
     border: solid;
     border-color: white;
     color: black;
-    background-color: rgb(143, 195, 241);
+    background-color: rgb(165, 241, 235);
     border-radius: 20px;
-    max-width: 450px;
     padding: 2rem;
 }
 
@@ -83,6 +82,7 @@ body {
     text-align: center;
     height: 500px;
     background-color: rgb(143, 195, 241);
+    border-radius: 20px;
     color: #003300;
 }
 
@@ -125,11 +125,6 @@ body {
     color: black;
     align-items: center;
 }
-/* 
-.carousel-inner > .carousel-item {
-    height:350px;
-    width:350px;
-} */
 
 .icon {
     background-color: black;
