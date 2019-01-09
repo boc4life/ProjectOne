@@ -28,19 +28,32 @@ var config = {
         $(".signIn").addClass("d-none");
         $(".signIn").removeClass("d-inline");
         $("#profileLink").text(displayName);
-        $("#profileUserName").text(displayName)
         $("#profileLink").removeClass("d-none");
         adjustMarkers();
         loadWishLists();
         appendJoinDate();
+        navbarUpdate();
+        $("#logoutBtn").removeClass("d-none")
     }
     if (!fbUser) {
         $(".signIn").removeClass("d-none").addClass("d-inline");
         $("#profileLink").addClass("d-none")
+        $("#profileUserName").text("");
+        $("#memberSinceSpan").text("");
+        $("#logoutBtn").addClass("d-none")
+        $("#wishListUL").empty();
+        $("#citiesVisitedTable").empty();
     }
   })
 
   $(document).ready(function(){
+    city = localStorage.getItem("currentCity");
+    database.ref(city + "/").once("value", function (citySnapshot){
+        var snap = citySnapshot.val();
+        backgroundImg = snap.photo;
+        $("#background").css("background-image", "url(assets/images/" + backgroundImg)
+    })
+
     $(document).on("click", ".cityMarkerImg", pointClick);
     $(".navbarCity").on("click", navbarClick);
     $("#signInBtn").on("click", signIn);
@@ -124,80 +137,6 @@ function pointClick() {
         $("#" + clickedCity + "TableRow").remove();
 }
 }
-
-function register() {
-    var email = $("#registerEmail").val().trim();
-    var password = $("#registerPassword").val().trim();
-    var username = $("#registerUsername").val().trim();
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == "auth/email-already-in-use") {
-          alert("Email already in use");
-        }
-        if (errorCode == "auth/invalid-email") {
-          alert("This does not appear to be a valid email address");
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-      }).then(function () {
-        user = firebase.auth().currentUser;
-        uid = user.uid;
-        user.updateProfile({
-            displayName: username
-        });
-        database.ref("users/" + uid + "/citiesVisited").set({
-            Philadelphia: "no",
-            'New-York': "no",
-            'Los-Angeles': "no",
-            Chicago: "no",
-            Phoenix: "no",
-            Houston: "no",
-            'San-Francisco': "no",
-            'Washington-DC': "no",
-            Denver: "no",
-            Miami: "no",
-            Seattle: "no",
-            Boston: "no",
-            'New-Orleans': "no",
-            Memphis: "no",
-            Dallas: "no",
-            Charlotte: "no",
-            Detroit: "no",
-            Baltimore: "no",
-            'Kansas-City': "no",
-            Atlanta: "no"
-        })
-      })
-}
-
-function signIn() {
-    email = $("#signInEmail").val().trim();
-    password = $("#signInPassword").val().trim();
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode == "auth/invalid-email") {
-        alert("Invalid Email");
-      }
-      if (errorCode == "auth/user-not-found") {
-        alert("Username Not Found");
-      }
-      if (errorCode == "auth/wrong-password") {
-        alert("Incorrect Password");
-      } else {
-        alert(errorMessage);
-      }
-    }).then(function () {
-      user = firebase.auth().currentUser;
-      uid = user.uid;
-    })
-   }
-
-  function logout() {
-    firebase.auth().signOut()
-  }
 
   function adjustMarkers() {
       database.ref("users/" + uid + "/citiesVisited").once("value").then(function(userSnapshot){
