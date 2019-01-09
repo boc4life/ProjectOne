@@ -18,10 +18,10 @@ var user = {
     username: "",
     password: ""
 }
-var cities = ["NewYork", "Philadelphia", "Chicago", "Seattle",
-"WashingtonDC", "Phoenix", "Denver", "LosAngeles", "SanFrancisco", 
-"Houston", "Miami", "Seattle", "Boston", "NewOrleans", "Memphis", "Dallas", 
-"Charlotte", "Detroit", "Baltimore", "KansasCity", "Atlanta"];
+var cities = ["New York", "Philadelphia", "Chicago", "Seattle",
+"Washington DC", "Phoenix", "Denver", "Los Angeles", "San Francisco", 
+"Houston", "Miami", "Seattle", "Boston", "New Orleans", "Memphis", "Dallas", 
+"Charlotte", "Detroit", "Baltimore", "Kansas City", "Atlanta"];
 
 var user = firebase.auth().currentUser;
 firebase.auth().onAuthStateChanged(function (user) {
@@ -107,7 +107,8 @@ function populateSelection() {
         var item = $("<a>");
         item.addClass("dropdown-item");
         item.attr("href", "examplecitypage.html");
-        item.attr("currentCity", cities[i].toLowerCase());
+        item.attr("currentCity", cities[i].toLowerCase().replace(" ", ""));
+        item
         item.text(cities[i]);
         $(".dropdownbar").append(item);
       }
