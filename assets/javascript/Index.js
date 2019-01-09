@@ -22,6 +22,8 @@ var cities = ["NewYork", "Philadelphia", "Chicago", "Seattle",
 "WashingtonDC", "Phoenix", "Denver", "LosAngeles", "SanFrancisco", 
 "Houston", "Miami", "Seattle", "Boston", "NewOrleans", "Memphis", "Dallas", 
 "Charlotte", "Detroit", "Baltimore", "KansasCity", "Atlanta"];
+var email;
+var password;
 
 var user = firebase.auth().currentUser;
 firebase.auth().onAuthStateChanged(function (user) {
@@ -49,55 +51,6 @@ $("#signInBtn").on("click", signIn);
 $("#registerBtn").on("click", register);
 });
 
-function register() {
-    var email = $("#registerEmail").val().trim();
-    var password = $("#registerPassword").val().trim();
-    var username = $("#registerUsername").val().trim();
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == "auth/email-already-in-use") {
-          alert("Email already in use");
-        }
-        if (errorCode == "auth/invalid-email") {
-          alert("This does not appear to be a valid email address");
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-      }).then(function () {
-        user = firebase.auth().currentUser;
-        uid = user.uid;
-        user.updateProfile({
-            displayName: username
-        });
-        userDisplay = username;
-        return userDisplay
-      })
-}
-
-function signIn() {
-    email = $("#signInEmail").val().trim();
-    password = $("#signInPassword").val().trim();
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode == "auth/invalid-email") {
-        alert("Invalid Email");
-      }
-      if (errorCode == "auth/user-not-found") {
-        alert("Username Not Found");
-      }
-      if (errorCode == "auth/wrong-password") {
-        alert("Incorrect Password");
-      } else {
-        alert(errorMessage);
-      }
-    }).then(function () {
-      user = firebase.auth().currentUser;
-      uid = user.uid;
-    })
-  }
 
 //<---------web page code---------//
 

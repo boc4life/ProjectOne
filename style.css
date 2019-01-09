@@ -82,6 +82,7 @@ body {
     text-align: center;
     height: 500px;
     background-color: rgb(143, 195, 241);
+    border-radius: 20px;
     color: #003300;
 }
 
@@ -124,11 +125,6 @@ body {
     color: black;
     align-items: center;
 }
-/* 
-.carousel-inner > .carousel-item {
-    height:350px;
-    width:350px;
-} */
 
 .icon {
     background-color: black;

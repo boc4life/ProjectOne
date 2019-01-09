@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -17,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <a class="navbar-brand" href="#">InfoCities</a>
+                            <a class="navbar-brand" href="index.html">InfoCities</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -29,9 +30,26 @@
                                     Cities
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item navbarCity" data-name="philadelphia">Philadelphia</a>
-                                    <a class="dropdown-item navbarCity" data-name="newyork">New York</a>
-                                    <a class="dropdown-item navbarCity" data-name="chicago">Chicago</a>
+                                        <a class="dropdown-item navbarCity" data-name="atlanta">Atlanta</a>
+                                        <a class="dropdown-item navbarCity" data-name="baltimore">Baltimore</a>
+                                        <a class="dropdown-item navbarCity" data-name="boston">Boston</a>
+                                        <a class="dropdown-item navbarCity" data-name="charlotte">Charlotte</a>
+                                        <a class="dropdown-item navbarCity" data-name="chicago">Chicago</a>
+                                        <a class="dropdown-item navbarCity" data-name="dallas">Dallas</a>
+                                        <a class="dropdown-item navbarCity" data-name="denver">Denver</a>
+                                        <a class="dropdown-item navbarCity" data-name="detroit">Detroit</a>
+                                        <a class="dropdown-item navbarCity" data-name="houston">Houston</a>
+                                        <a class="dropdown-item navbarCity" data-name="lasvegas">Las Vegas</a>
+                                        <a class="dropdown-item navbarCity" data-name="losangeles">Los Angeles</a>
+                                        <a class="dropdown-item navbarCity" data-name="miami">Miami</a>
+                                        <a class="dropdown-item navbarCity" data-name="nashville">Nashville</a>
+                                        <a class="dropdown-item navbarCity" data-name="neworleans">New Orleans</a>
+                                        <a class="dropdown-item navbarCity" data-name="newyork">New York</a>
+                                        <a class="dropdown-item navbarCity" data-name="philadelphia">Philadelphia</a>
+                                        <a class="dropdown-item navbarCity" data-name="phoenix">Phoenix</a>
+                                        <a class="dropdown-item navbarCity" data-name="sanfrancisco">San Francisco</a>
+                                        <a class="dropdown-item navbarCity" data-name="seattle">Seattle</a>
+                                        <a class="dropdown-item navbarCity" data-name="washingtondc">Washington, DC</a>
                                     </div>
                                 </li>
                                 <li class="nav-item active">
@@ -109,7 +127,7 @@
                     </div>
                 <div class="container-fluid d-none" id="wishListContainer">
                         <div class="row">
-                            <div class="col-sm-4 border border-dark wishListRow">
+                            <div class="col-sm-4 wishListRow">
                                 Make a to-do list for <span id="wishListCity"></span>
                 <br><br>
                                 <div class="input-group">
@@ -119,7 +137,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-8 border border-dark wishListRow">
+                            <div class="col-sm-8 border wishListRow">
                                 <table class="table table-borderless" id="wishListTable">
                                 </table>
                             </div>
@@ -163,6 +181,7 @@
 
         <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
         <script type="text/javascript" src="assets/javascript/logic.js"></script>
+        <script type="text/javascript" src="assets/javascript/registerloginlogic.js"></script>
         <script type="text/javascript" src="assets/javascript/searchlogic.js"></script>
         <script type="text/javascript" src="assets/javascript/weatherscript.js"></script>
         <script type="text/javascript" src="assets/javascript/seatgeek.js"></script>

@@ -2,35 +2,7 @@
 <html>
     <head>
         <title>Test Map</title>
-        <style>
-#map {
-    height:569px;
-    width:920px;
-}
 
-#mapContainer {
-    position:relative;
-    height: 569px;
-    width: 920px;
-}
-.cityMarker {
-    /* height: 25px;
-    width: 25px; */
-    /* background: url("assets/images/emptymarker.png"); */
-    position: absolute;
-    background-repeat:no-repeat;
-    background-size: cover;
-    opacity: 1.0;
-    -moz-opacity: 1.0;
-    -webkit-opacity: 1.0;
-}
-
-.cityMarkerImg {
-    height: 25px;
-    width: 25px;
-}
-
-        </style>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -38,14 +10,16 @@
         <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <link rel="stylesheet" type="text/css" href="profilestyle.css">    </head>
 <body>
+    <div id="background"></div>
     <div class="container" id="mainNav">
             <div class="main">
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <a class="navbar-brand" href="#">InfoCities</a>
+                            <a class="navbar-brand" href="index.html">InfoCities</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -57,9 +31,26 @@
                                     Cities
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item navbarCity" data-name="philadelphia">Philadelphia</a>
-                                    <a class="dropdown-item navbarCity" data-name="newyork">New York</a>
+                                    <a class="dropdown-item navbarCity" data-name="atlanta">Atlanta</a>
+                                    <a class="dropdown-item navbarCity" data-name="baltimore">Baltimore</a>
+                                    <a class="dropdown-item navbarCity" data-name="boston">Boston</a>
+                                    <a class="dropdown-item navbarCity" data-name="charlotte">Charlotte</a>
                                     <a class="dropdown-item navbarCity" data-name="chicago">Chicago</a>
+                                    <a class="dropdown-item navbarCity" data-name="dallas">Dallas</a>
+                                    <a class="dropdown-item navbarCity" data-name="denver">Denver</a>
+                                    <a class="dropdown-item navbarCity" data-name="detroit">Detroit</a>
+                                    <a class="dropdown-item navbarCity" data-name="houston">Houston</a>
+                                    <a class="dropdown-item navbarCity" data-name="lasvegas">Las Vegas</a>
+                                    <a class="dropdown-item navbarCity" data-name="losangeles">Los Angeles</a>
+                                    <a class="dropdown-item navbarCity" data-name="miami">Miami</a>
+                                    <a class="dropdown-item navbarCity" data-name="nashville">Nashville</a>
+                                    <a class="dropdown-item navbarCity" data-name="neworleans">New Orleans</a>
+                                    <a class="dropdown-item navbarCity" data-name="newyork">New York</a>
+                                    <a class="dropdown-item navbarCity" data-name="philadelphia">Philadelphia</a>
+                                    <a class="dropdown-item navbarCity" data-name="phoenix">Phoenix</a>
+                                    <a class="dropdown-item navbarCity" data-name="sanfrancisco">San Francisco</a>
+                                    <a class="dropdown-item navbarCity" data-name="seattle">Seattle</a>
+                                    <a class="dropdown-item navbarCity" data-name="washingtondc">Washington, DC</a>
                                     </div>
                                 </li>
                                 <li class="nav-item active">
@@ -105,19 +96,26 @@
 <div class="jumbotron w-25 mx-auto" id="profileTron">
     <div class="container" id="profileHead">
     <h1><span id="profileUserName"></span></h1>
-    <p id="memberSince">Member since: </p><span id="memberSinceSpan"></span>
+    <p id="memberSince">Member since: <span id="memberSinceSpan"></span></p>
     <!-- <button class="btn" id="logoutBtn">Log Out</button> -->
     </div>
+    <button class="btn btn-primary mx-auto" id="logoutBtn">Log Out</button>
 </div>
 
-<div class="container fluid">
+<div class="container fluid" id="listContainer">
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header wishListCard">
                     View Your To-Do Lists
                 </div>
-                <ul class="list-group list-group flush" id="wishListCities">
+                <ul class="list-group flush" id="wishListCities">
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card d-none wishListCard" id="wishListItems">
+                <ul class="list-group flush" id="wishListUL">
                 </ul>
             </div>
         </div>
@@ -137,6 +135,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 <script type="text/javascript" src="assets/javascript/profilelogic.js"></script>
+<script type="text/javascript" src="assets/javascript/registerloginlogic.js"></script>
 
 </body>
 </html>
