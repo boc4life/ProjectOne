@@ -32,6 +32,7 @@ var latlng;
 var user = false;
 var uid;
 var userDisplay;
+var moment = moment().add(1, "days").format("YYYY-MM-DD");
 
 firebase.auth().onAuthStateChanged(function (fbUser) {
   if (fbUser) {

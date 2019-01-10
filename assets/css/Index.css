@@ -23,7 +23,6 @@ h1 {
 
 #dropdownlower {
     position: absolute;
-    left: 530px;
     margin-top: 100px;
     text-align: center;
 }
@@ -45,8 +44,8 @@ h1 {
 
 .btn {
     position: relative;
-    top: 270px;
-    right: 30px;
+    top: 300px;
+    left: 90px;
     background-color: rgb(252, 241, 241);
     color: black;
     width: 200px;
