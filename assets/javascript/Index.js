@@ -21,7 +21,7 @@ var user = {
 
 var cities = ["New York", "Philadelphia", "Chicago", "Seattle",
 "Washington DC", "Phoenix", "Denver", "Los Angeles", "San Francisco", 
-"Houston", "Miami", "Seattle", "Boston", "New Orleans", "Memphis", "Dallas", 
+"Houston", "Miami", "Seattle", "Boston", "New Orleans", "Nashville", "Dallas", 
 "Charlotte", "Detroit", "Baltimore", "Kansas City", "Atlanta"];
 var email;
 var password;

@@ -77,7 +77,7 @@ var points = [
     {x:89, y:12, city: "Seattle"},
     {x:834, y:128, city: "Boston"},
     {x:570, y:433, city: "New-Orleans"},
-    {x:558, y:321, city: "Memphis"},
+    {x:558, y:321, city: "Nashville"},
     {x:437, y:386, city: "Dallas"},
     {x:706, y:303, city: "Charlotte"},
     {x:652, y:163, city: "Detroit"},

@@ -59,6 +59,11 @@ $("#registerBtn").on("click", register);
 $(document).on("click", "#wishListAdd", wishListAdd)
 $(document).on("click", ".removeBtn", removeWishItem)
 $(document).on("click", "#logoutBtn", logout)
+$(document).on("click", ".restaurantImage", function(event) {
+    $(this).closest('.carousel-item').find('.add-info').removeClass("d-none");
+    $("#carouselExampleIndicators").carousel('pause');
+})
+
 })
 
 function loadCarousel() {
@@ -83,14 +88,22 @@ function callback(results, status) {
             }
         var image = $("<img class=\"restaurantImage d-block mx-auto w-100\">");
         var name = $("<p>");
+        var moreInfo = $("<div class='add-info d-none'>");
+        moreInfo.append("Additional Restaurant Info Here");
         image.attr("src", results.photos[0].getUrl({"madWidth": 350, "maxHeight": 350}));
         name.append(results.name);
-        newDiv.append(name).append(image);
+        newDiv.append(name).append(image).append(moreInfo);
         console.log(newDiv);
         $("#carousel-inner").append(newDiv);
     }
 }
 
+function testInfo(){
+    $(this).closest('.carousel-item').find('.add-info').removeClass("d-none");
+    console.log("click");
+    
+    console.log("click1");
+ }
 
 function navbarClick () {
     console.log("CLICK");
@@ -140,6 +153,8 @@ function renderCity() {
 
         $.getScript("https://maps.google.com/maps/api/js?key=AIzaSyD7rrcP_wAQd4SZa6nZVTbMsyMQp1v2Ml4&libraries=places&callback=loadCarousel");
     }
+
+
 
     function wishListAdd() {
         var newItemInput = $("#wishListInput").val().trim();
