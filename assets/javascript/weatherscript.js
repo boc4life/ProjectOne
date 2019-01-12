@@ -1,5 +1,5 @@
 function displayWeather(weatherLat, weatherLng) {
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + weatherLat + "&lon=" + weatherLng + "&appid=34ad40499049f410672766733528080a    ").then(function(weatherResponse) {
+    $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=" + weatherLat + "&lon=" + weatherLng + "&appid=34ad40499049f410672766733528080a    ").then(function(weatherResponse) {
     console.log(weatherResponse);
     if (weatherResponse.weather[0].id >= 200 && weatherResponse.weather[0].id < 300) {
         $("#weatherImageBox").prepend("<img class=weatherImage src=assets/images/thunderstorm.png>");
