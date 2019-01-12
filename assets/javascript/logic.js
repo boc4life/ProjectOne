@@ -87,7 +87,7 @@ function callback(results, status) {
         name.append(results.name);
         newDiv.append(name).append(image).append(moreInfo);
         $("#carouselExampleIndicators").append(newDiv);
-        setTimeout(slickInit, 1000)
+        setTimeout(slickInit, 2000)
     }
 }
 
