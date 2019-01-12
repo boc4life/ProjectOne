@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
     </head>
     <body>
         <div id="background"></div>
@@ -62,11 +64,11 @@
                                             Register
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <input id="registerEmail">Email</input>
+                                            Email:<input id="registerEmail"></input>
                                             <br>
-                                            <input id="registerPassword">Password</input>
+                                            Password:<input type="password" id="registerPassword"></input>
                                             <br>
-                                            <input id="registerUsername">Username</input>
+                                            Username:<input id="registerUsername"></input>
                                             <br><button class="btn btn-dark" id="registerBtn">Submit</button>
                                         </div>
                                     </li>
@@ -77,7 +79,7 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <input id="signInEmail">Email</input>
                                             <br>
-                                            <input id="signInPassword">Password</input>
+                                            <input type="password" id="signInPassword">Password</input>
                                             <br>
                                             <br><button class="btn btn-dark" id="signInBtn">Submit</button>
                                         </div>
@@ -107,9 +109,7 @@
                 <div class="container-fluid mx-auto w-75" id="restaurants">
                     <p id="restaurantHead">Restaurants You'll Love</p>
             <br>
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade w-50 mx-auto" data-ride="carousel">
-                        <div class="carousel-inner" id="carousel-inner">
-                        </div>
+                    <div id="carouselExampleIndicators" class="w-50 mx-auto">
                     </div>
                 </div>
             <br>
@@ -199,6 +199,7 @@
         <script type="text/javascript" src="assets/javascript/searchlogic.js"></script>
         <script type="text/javascript" src="assets/javascript/weatherscript.js"></script>
         <script type="text/javascript" src="assets/javascript/seatgeek.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <div id="map"></div>
 
     </body>

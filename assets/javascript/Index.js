@@ -30,7 +30,7 @@ var password;
 var user = firebase.auth().currentUser;
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-      console.log(user.displayName);
+    navbarUpdate();
       $(".signIn").addClass("d-none");
       $(".signIn").removeClass("d-inline");
       $(".register").addClass("d-none");
