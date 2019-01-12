@@ -30,6 +30,7 @@ var latlng;
 var user = false;
 var uid;
 var userDisplay;
+var moment = moment().add(1, "days").format("YYYY-MM-DD");
 var displayName;
 var paused = false;
 
