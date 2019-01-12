@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Source+Serif+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Lato|Libre+Baskerville|Source+Serif+Pro" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/Index.css">
         
 </head>
@@ -45,14 +46,14 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Register
                                         </a>
-                                        <div class="dropdown-menu " id="signin" aria-labelledby="navbarDropdown">
-                                            <input class="input" id="registerEmail">Email</input>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                Email:<input id="registerEmail"></input>
+                                                <br>
+                                                Password:<input type="password" id="registerPassword"></input>
+                                                <br>
+                                                Username:<input id="registerUsername"></input>
                                             <br>
-                                            <input class="input" id="registerPassword">Password</input>
-                                            <br>
-                                            <input class="input" id="registerUsername">User Name</input>
-                                            <br>
-                                            <button class="input" id="registerBtn">Register</button>
+                                            <button class="btn btn-dark" id="registerBtn">Register</button>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown d-inline mynav signIn" id="signin">
@@ -62,7 +63,7 @@
                                         <div class="dropdown-menu" id="signin" aria-labelledby="navbarDropdown">
                                             <input class="input" id="signInEmail">Email</input>
                                             <br>
-                                            <input class="input" id="signInPassword">Password</input>
+                                            <input class="input" type="password" id="signInPassword">Password</input>
                                             <br>
                                             <button class="input" id="signInBtn">Sign In</button>
                                     </div>

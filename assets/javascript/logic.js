@@ -31,6 +31,7 @@ var user = false;
 var uid;
 var userDisplay;
 var displayName;
+var paused = false;
 
 firebase.auth().onAuthStateChanged(function (fbUser) {
   if (fbUser) {
@@ -59,6 +60,7 @@ $("#registerBtn").on("click", register);
 $(document).on("click", "#wishListAdd", wishListAdd)
 $(document).on("click", ".removeBtn", removeWishItem)
 $(document).on("click", "#logoutBtn", logout)
+$(document).on("click", ".restaurantImage", moreInfo)
 })
 
 function loadCarousel() {
@@ -66,7 +68,7 @@ function loadCarousel() {
     for (var i = 0; i < restaurantIDs.length; i++) {
         var request = {
             placeId: restaurantIDs[i],
-            fields: ["photos", "name"]
+            fields: ["photos", "name", "formatted_address", "formatted_phone_number"]
         };
         service = new google.maps.places.PlacesService(map);
         service.getDetails(request, callback);
@@ -76,21 +78,40 @@ function loadCarousel() {
 function callback(results, status) {
     console.log(results);
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-        var newDiv = $("<div class=\"carousel-item\">");
-            if (!activeSet) {
-                newDiv.addClass("active");
-                activeSet = true;
-            }
+        var newDiv = $("<div>");
         var image = $("<img class=\"restaurantImage d-block mx-auto w-100\">");
         var name = $("<p>");
+        var moreInfo = $("<div class='add-info d-none'>");
+        moreInfo.append(results.formatted_address + "<br>").append(results.formatted_phone_number);
         image.attr("src", results.photos[0].getUrl({"madWidth": 350, "maxHeight": 350}));
         name.append(results.name);
-        newDiv.append(name).append(image);
-        console.log(newDiv);
-        $("#carousel-inner").append(newDiv);
+        newDiv.append(name).append(image).append(moreInfo);
+        $("#carouselExampleIndicators").append(newDiv);
+        setTimeout(slickInit, 1000)
     }
 }
 
+function slickInit() {
+    $("#carouselExampleIndicators").slick({
+        autoplay: true,
+        fade: true
+    })
+}
+
+function moreInfo() {
+    if (!paused) {
+    console.log("Click")
+    $("#carouselExampleIndicators").slick('slickPause');
+    $(this).closest('.slick-slide').find('.add-info').removeClass("d-none");
+    paused = true;
+    }
+    else if (paused) {
+        console.log("click2")
+        $(this).closest('.slick-slide').find('.add-info').addClass("d-none");
+        $("#carouselExampleIndicators").slick('slickPlay');
+        paused = false;
+    }
+}
 
 function navbarClick () {
     console.log("CLICK");
@@ -98,7 +119,7 @@ function navbarClick () {
     console.log(city)
     $("#cityName").empty();
     $("#cityBlurb").empty();
-    $("#carousel-inner").empty();
+    $("#carouselExampleIndicators").empty();
     $("#searchResultsContainer").empty();
     $("#temperature").empty();
     $("#clouds").empty();

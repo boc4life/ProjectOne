@@ -80,10 +80,10 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    height: 500px;
     background-color: rgb(143, 195, 241);
     border-radius: 20px;
     color: #003300;
+    padding-bottom: 4rem;
 }
 
 #restaurantHead {

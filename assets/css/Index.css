@@ -43,7 +43,7 @@ h1 {
     left: 650px;
 }
 
-.btn {
+#dropdownMenuButton {
     position: relative;
     top: 270px;
     right: 30px;
