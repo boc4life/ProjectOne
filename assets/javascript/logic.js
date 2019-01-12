@@ -88,11 +88,11 @@ function callback(results, status) {
         name.append(results.name);
         newDiv.append(name).append(image).append(moreInfo);
         $("#carouselExampleIndicators").append(newDiv);
-        setTimeout(slickInit, 2000)
     }
 }
 
 function slickInit() {
+    debugger;
     $("#carouselExampleIndicators").slick({
         autoplay: true,
         fade: true
@@ -117,7 +117,8 @@ function moreInfo() {
 function navbarClick () {
     console.log("CLICK");
     var city = $(this).attr("data-name");
-    console.log(city)
+    console.log(city);
+    $("#carouselExampleIndicators").slick('unslick');
     $("#cityName").empty();
     $("#cityBlurb").empty();
     $("#carouselExampleIndicators").empty();
@@ -154,6 +155,7 @@ function renderCity() {
         displayRestaurants();
         displayKayak();
         displayWeather(lat, lng);
+        setTimeout(slickInit, 2000)
     })
 }
     function displayRestaurants() {
